@@ -9,3 +9,5 @@ match name:
     print("Griffindor")
   case "Draco":
     print("Slytherin")
+  case _:
+    print("who?")
