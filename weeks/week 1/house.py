@@ -1,8 +1,11 @@
 name = input("What's your name? ")
 
-if name == "Harry" or name == "Hermione" or name == "Ron":
+match name:
+  case "Harry":
     print("Griffindor")
-elif name == "Draco":
+  case "Hermione":
+    print("Griffindor")
+  case "Ron":
+    print("Griffindor")
+  case "Draco":
     print("Slytherin")
-else:
-    print("Who?")
