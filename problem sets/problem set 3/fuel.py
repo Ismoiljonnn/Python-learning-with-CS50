@@ -18,7 +18,7 @@ def get_fuel_persentage():
 
       if y == 0:
         raise ZeroDivisionError
-      
+
       if x < 0 or x > y:
         continue
 
