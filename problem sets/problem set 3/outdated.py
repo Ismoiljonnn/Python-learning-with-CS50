@@ -33,7 +33,7 @@ def main():
             year = int(year_str)
 
             if 1 <= day <= 31:
-              print(f"{year}-{month:02}-{day:02d}")
+              print(f"{year}-{month:02d}-{day:02d}")
               break
 
     except ValueError:
