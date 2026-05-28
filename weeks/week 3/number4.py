@@ -3,10 +3,10 @@ def main():
   print(f"x is {x}")
 
 
-def get_int(promt):
+def get_int(prompt):
   while True:
     try:
-      return int(input(promt))
+      return int(input(prompt))
     except ValueError:
       pass
 
