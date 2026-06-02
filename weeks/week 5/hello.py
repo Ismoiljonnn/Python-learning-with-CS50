@@ -1,6 +1,7 @@
 def main():
   name = input("What's your name? ")
-  hello(name)
+  output = hello(name)
+  print(output)
 
 
 def hello(to="world"):
