@@ -1,14 +1,15 @@
 def main():
-  text = input("Input: ")
+  word = input("Input: ")
+  print(f"Output: {shorten(word)}")
+
+
+def shorten(word):
   result = ""
 
-  vowels = "aeiouAEIOU"
-
-  for char in text:
-    if char not in vowels:
-      result += char
-
-  print("Output: ", result)
+  for letter in word:
+    if letter.lower() not in ['a', 'e', 'i', 'o', 'u', 'o']:
+      result += letter
+  return result
 
 if __name__ == "__main__":
   main()
