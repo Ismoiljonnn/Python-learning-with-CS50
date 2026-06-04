@@ -3,8 +3,10 @@ students = []
 with open("students.csv") as file:
   for line in file:
     name, house = line.rstrip().split(",")
-    students.append(f"{name} is in {house}")
+    student = {}
+    student = {"name": name, "house": house}
+    students.append(student)
 
 
-for student in sorted(students):
-  print(student)
+for student in students:
+  print(f"{student['name']} is in {students['house']}")
