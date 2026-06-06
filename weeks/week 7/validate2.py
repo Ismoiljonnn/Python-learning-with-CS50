@@ -1,8 +1,8 @@
 import re
 
-email = input("What's your email? ").strip().lower()
+email = input("What's your email? ").strip()
 
-if re.search(r"^\w.+@[a-zA-Z0-9_]+\.edu$", email):
+if re.search(r"^\w.+@[a-zA-Z0-9_]+\.edu$", re.IGNORECASE):
   print("Valid")
 else:
   print("Invalid")
