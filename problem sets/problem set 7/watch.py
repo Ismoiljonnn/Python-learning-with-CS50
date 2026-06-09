@@ -7,14 +7,12 @@ def main():
 
 
 def parse(s):
-    pattern = r'src="https?://(?:www\.)?youtube\.com/embed/([a-z-A-Z0-9_-]+)"'
+  if re.search(r'<iframe', s):
+      match = re.search(r'src="https?://(?:www\.)?youtube\.com/embed/([a-zA-Z0-9_-]+)"', s)
+      if match:
+          return f"https://youtu.be/{match.group(1)}"
+  return None
 
-    match = re.search(pattern, s)
-    if match:
-        video_id = match.group(1)
-        return f"https://youtu.be/{video_id}"
-
-    return None
 
 if __name__ == "__main__":
     main()
