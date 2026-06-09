@@ -1,16 +1,13 @@
-import re
-import sys
-
+import validators
 
 def main():
-  print(validate(input("What's your email address? ")))
-
+    email = input("What's your email address? ")
+    print(validate(email))
 
 def validate(s):
-  if re.search(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$", s):
-    return "Valid"
-  return "Invalid"
-
+    if validators.email(s):
+        return "Valid"
+    return "Invalid"
 
 if __name__ == "__main__":
-  main()
+    main()
