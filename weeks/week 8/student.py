@@ -1,6 +1,6 @@
 def main():
   student = get_student()
-  print(f"{student[0]} from {student[1]}")
+  print(f"{student['name']} from {student['house']}")
 
 
 def get_student():
