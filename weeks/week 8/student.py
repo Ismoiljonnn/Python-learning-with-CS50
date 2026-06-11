@@ -4,10 +4,9 @@ def main():
 
 
 def get_student():
-  student = {}
-  student["name"] = input("Name: ")
-  student["house"] = input("House: ")
-  return student
+  name = input("Name: ")
+  house = input("House: ")
+  return {name, house}
 
 
 if __name__ == "__main__":
