@@ -9,10 +9,12 @@ def main():
 
 
 def deposit(n):
+  global balance
   balance += n
 
 
 def withdraw(n):
+  global balance
   balance -= n
 
 
