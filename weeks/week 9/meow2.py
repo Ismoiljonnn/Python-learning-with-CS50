@@ -4,4 +4,5 @@ def meow(n: int):
 
 
 number: int = int(input("Number: "))
-meow(number)
+meows: str = meow(number)
+print(meows)
