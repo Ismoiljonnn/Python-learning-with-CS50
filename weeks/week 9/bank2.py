@@ -4,7 +4,7 @@ class Account:
 
   @property
   def balance(self):
-    return self.balance
+    return self._balance
 
   def deposit(self, n):
     self._balance += n
