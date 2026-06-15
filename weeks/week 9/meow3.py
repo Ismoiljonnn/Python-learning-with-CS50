@@ -7,4 +7,4 @@ elif len(sys.argv) == 3 and sys.argv[1] == "-n":
   for _ in range(n):
     print("meow") 
 else:
-  print("usage meovs.py")
+  print("usage meows.py")
