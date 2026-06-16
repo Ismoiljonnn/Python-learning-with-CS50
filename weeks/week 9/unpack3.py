@@ -1,5 +1,5 @@
 def f(*args, **kwargs):
-  print("Posiotional:", args)
+  print("Named:", kwargs)
 
 
-f(100, 50, 25)
+f(galleons=100, sickles=50, knuts=50)
