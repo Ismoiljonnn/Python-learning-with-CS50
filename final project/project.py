@@ -14,6 +14,7 @@ Author: Ismoiljon
 import os
 import re
 import sys
+import random
 import requests
 from datetime import datetime
 
@@ -34,7 +35,14 @@ def show_menu():
     print("2. View notes")
     print("3. Check weather")
     print("4. Check password strength")
-    print("5. Exit")
+    print("5. Show current time")
+    print("6. Show current date")
+    print("7. Flip a coin")
+    print("8. Roll a dice")
+    print("9. Count words in a text")
+    print("10. Convert Celsius to Fahrenheit")
+    print("11. Calculate BMI")
+    print("12. Exit")
     print("-" * 30)
 
 
@@ -47,7 +55,7 @@ def main():
     while True:
         clear_screen()
         show_menu()
-        choice = input("Choose an option (1-5): ").strip()
+        choice = input("Choose an option (1-12): ").strip()
 
         if choice == "1":
             note = input("Enter your note: ").strip()
@@ -71,11 +79,38 @@ def main():
             print(f"\nPassword strength: {password_strength(password)}")
             pause()
         elif choice == "5":
+            print(f"\nCurrent time: {get_time()}")
+            pause()
+        elif choice == "6":
+            print(f"\nToday's date: {get_date()}")
+            pause()
+        elif choice == "7":
+            print(f"\nResult: {flip_coin()}")
+            pause()
+        elif choice == "8":
+            sides = input("Number of sides (default 6): ").strip()
+            sides = int(sides) if sides else 6
+            print(f"\nYou rolled: {roll_dice(sides)}")
+            pause()
+        elif choice == "9":
+            text = input("Enter your text: ").strip()
+            print(f"\nWord count: {count_words(text)}")
+            pause()
+        elif choice == "10":
+            celsius = input("Enter temperature in Celsius: ").strip()
+            print(f"\n{celsius}°C = {celsius_to_fahrenheit(float(celsius))}°F")
+            pause()
+        elif choice == "11":
+            weight = float(input("Enter weight in kg: ").strip())
+            height = float(input("Enter height in meters: ").strip())
+            print(f"\nYour BMI: {calculate_bmi(weight, height)}")
+            pause()
+        elif choice == "12":
             clear_screen()
             print("Goodbye!")
             sys.exit(0)
         else:
-            print("\nInvalid option, please choose between 1 and 5.")
+            print("\nInvalid option, please choose between 1 and 12.")
             pause()
 
 
@@ -132,6 +167,47 @@ def password_strength(password):
         return "Medium"
     else:
         return "Strong"
+
+
+def get_time():
+    """Return the current time as a string (HH:MM:SS)."""
+    return datetime.now().strftime("%H:%M:%S")
+
+
+def get_date():
+    """Return today's date as a string (YYYY-MM-DD)."""
+    return datetime.now().strftime("%Y-%m-%d")
+
+
+def flip_coin():
+    """Return 'Heads' or 'Tails' at random."""
+    return random.choice(["Heads", "Tails"])
+
+
+def roll_dice(sides=6):
+    """Return a random integer between 1 and the given number of sides."""
+    if sides < 2:
+        raise ValueError("A dice must have at least 2 sides")
+    return random.randint(1, sides)
+
+
+def count_words(text):
+    """Return the number of words in a given text."""
+    if not text:
+        return 0
+    return len(text.split())
+
+
+def celsius_to_fahrenheit(celsius):
+    """Convert a temperature from Celsius to Fahrenheit, rounded to 1 decimal."""
+    return round((celsius * 9 / 5) + 32, 1)
+
+
+def calculate_bmi(weight_kg, height_m):
+    """Calculate BMI given weight in kg and height in meters, rounded to 1 decimal."""
+    if height_m <= 0 or weight_kg <= 0:
+        raise ValueError("Weight and height must be positive numbers")
+    return round(weight_kg / (height_m ** 2), 1)
 
 
 if __name__ == "__main__":
