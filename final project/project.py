@@ -102,7 +102,7 @@ def main():
             pause()
         elif choice == "11":
             weight = float(input("Enter weight in kg: ").strip())
-            height = float(input("Enter height in meters: ").strip())
+            height = float(input("Enter height in cm: ").strip())
             print(f"\nYour BMI: {calculate_bmi(weight, height)}")
             pause()
         elif choice == "12":
@@ -203,10 +203,11 @@ def celsius_to_fahrenheit(celsius):
     return round((celsius * 9 / 5) + 32, 1)
 
 
-def calculate_bmi(weight_kg, height_m):
-    """Calculate BMI given weight in kg and height in meters, rounded to 1 decimal."""
-    if height_m <= 0 or weight_kg <= 0:
+def calculate_bmi(weight_kg, height_cm):
+    """Calculate BMI given weight in kg and height in centimeters, rounded to 1 decimal."""
+    if height_cm <= 0 or weight_kg <= 0:
         raise ValueError("Weight and height must be positive numbers")
+    height_m = height_cm / 100
     return round(weight_kg / (height_m ** 2), 1)
 
 
