@@ -105,9 +105,9 @@ def test_celsius_to_fahrenheit():
 
 
 def test_calculate_bmi():
-    assert calculate_bmi(70, 1.75) == 22.9
+    assert calculate_bmi(70, 175) == 22.9
 
     with pytest.raises(ValueError):
-        calculate_bmi(0, 1.75)
+        calculate_bmi(0, 175)
     with pytest.raises(ValueError):
         calculate_bmi(70, 0)
