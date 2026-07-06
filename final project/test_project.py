@@ -6,7 +6,20 @@ Run with: pytest test_project.py
 
 import os
 import pytest
-from project import add_note, get_notes, get_weather, password_strength, NOTES_FILE
+from project import (
+    add_note,
+    get_notes,
+    get_weather,
+    password_strength,
+    get_time,
+    get_date,
+    flip_coin,
+    roll_dice,
+    count_words,
+    celsius_to_fahrenheit,
+    calculate_bmi,
+    NOTES_FILE,
+)
 
 
 def setup_function():
@@ -57,3 +70,44 @@ def test_get_weather_invalid_input():
     # since network responses are not reliable to test against.
     with pytest.raises(ValueError):
         get_weather("")
+
+
+def test_get_time_and_date():
+    # Just check the format, since the exact value always changes.
+    assert len(get_time().split(":")) == 3  # HH:MM:SS
+    assert len(get_date().split("-")) == 3  # YYYY-MM-DD
+
+
+def test_flip_coin():
+    for _ in range(20):
+        assert flip_coin() in ("Heads", "Tails")
+
+
+def test_roll_dice():
+    for _ in range(20):
+        result = roll_dice(6)
+        assert 1 <= result <= 6
+
+    with pytest.raises(ValueError):
+        roll_dice(1)
+
+
+def test_count_words():
+    assert count_words("Hello world") == 2
+    assert count_words("") == 0
+    assert count_words("CS50P is fun") == 3
+
+
+def test_celsius_to_fahrenheit():
+    assert celsius_to_fahrenheit(0) == 32
+    assert celsius_to_fahrenheit(100) == 212
+    assert celsius_to_fahrenheit(37) == 98.6
+
+
+def test_calculate_bmi():
+    assert calculate_bmi(70, 1.75) == 22.9
+
+    with pytest.raises(ValueError):
+        calculate_bmi(0, 1.75)
+    with pytest.raises(ValueError):
+        calculate_bmi(70, 0)
